@@ -12,14 +12,14 @@ public class Classroom {
 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
-	private Long id;
+	private Long classroomId;
 	private String trainer;
-	private ArrayList<Trainee> trainees;
+	private Long trainees;
 
 	public Classroom() {
 	};
 
-	public Classroom(Long id, String trainer, ArrayList<Trainee> trainees) {
+	public Classroom(Long id, String trainer, Long trainees) {
 		this.setTrainer(trainer);
 		this.setTrainees(trainees);
 
@@ -33,11 +33,11 @@ public class Classroom {
 		this.trainer = trainer;
 	}
 
-	public ArrayList<Trainee> getTrainees() {
+	public Long getTrainees() {
 		return trainees;
 	}
 
-	public void setTrainees(ArrayList<Trainee> trainees2) {
+	public void setTrainees(Long trainees2) {
 		this.trainees = trainees2;
 	}
 
