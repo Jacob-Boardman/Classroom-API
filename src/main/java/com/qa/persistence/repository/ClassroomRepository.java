@@ -2,11 +2,11 @@ package com.qa.persistence.repository;
 
 public interface ClassroomRepository {
 	
-	String createClassroom();
+	String createClassroom(String classroom);
 	
 	String getAllClassrooms();
 	
-	String updateClassroom();
+	String updateClassroom(Long id, String classroom);
 	
-	String deleteClassroom();
+	String deleteClassroom(Long id);
 }

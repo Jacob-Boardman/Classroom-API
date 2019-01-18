@@ -6,8 +6,10 @@ import static javax.transaction.Transactional.TxType.REQUIRED;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import com.qa.persistence.domain.Trainee;
 import com.qa.util.JSONUtil;
 
 import java.util.Collection;
@@ -22,28 +24,28 @@ public class TraineeDBRepository implements TraineeRepository{
 	@Inject
 	private JSONUtil util;
 
-
 	@Transactional(REQUIRED)
-	public String createTrainee() {
-		
+	public String createTrainee(String trainee) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public String getTrainee() {
-		
-		return null;
+		Query query = manager.createQuery("SELECT t FROM Trainee t");
+		Collection<Trainee> trainees = (Collection<Trainee>)query.getResultList();
+		return util.getJSONForObject(trainees);
 	}
-
+	
 	@Transactional(REQUIRED)
-	public String updateTrainee() {
-		
+	public String updateTrainee(Long id, String trainee) {
+		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Transactional(REQUIRED)
-	public String deleteTrainee() {
-		
+	public String deleteTrainee(Long id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 }
