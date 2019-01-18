@@ -11,23 +11,23 @@ public class ClassroomServiceImplementaion implements ClassroomService {
 	private ClassroomRepository repo;
 	
 	public String createClassroom(String classroom) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return repo.createClassroom(classroom);
 	}
 
 	public String getAllClassrooms() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return repo.getAllClassrooms();
 	}
 
 	public String updateClassroom(Long id, String classroom) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return repo.updateClassroom(id, classroom);
 	}
 
 	public String deleteClassroom(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return repo.deleteClassroom(id);
 	}
 
 }

@@ -4,7 +4,7 @@ public interface TraineeRepository {
 	
 	String createTrainee(String trainee);
 	
-	String getTrainee();
+	String getAllTrainees();
 	
 	String updateTrainee(Long id, String trainee);
 	

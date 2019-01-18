@@ -30,7 +30,7 @@ public class TraineeDBRepository implements TraineeRepository {
 		return "{Message : Created a Trainee}";
 	}
 
-	public String getTrainee() {
+	public String getAllTrainees() {
 		Query query = manager.createQuery("SELECT t FROM Trainee t");
 		Collection<Trainee> trainees = (Collection<Trainee>) query.getResultList();
 		return util.getJSONForObject(trainees);
