@@ -1,9 +1,12 @@
 package com.qa.persistence.domain;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Trainee {
@@ -13,6 +16,9 @@ public class Trainee {
 	private Long traineeId;
 	private	Long classroomId;
 	private String name;
+	
+	@ManyToOne
+	Set<Classroom> classroom;
 
 	public Trainee() {
 	}

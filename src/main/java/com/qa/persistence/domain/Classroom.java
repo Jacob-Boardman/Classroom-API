@@ -1,9 +1,14 @@
 package com.qa.persistence.domain;
 
+import java.security.acl.Group;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
 
 @Entity
 public class Classroom {
@@ -14,6 +19,14 @@ public class Classroom {
 	
 	private String trainer;
 	private Long trainees;
+	
+	@OneToMany(mappedBy="classroom")
+	@JoinTable(name="CLASROOM_GROUP",
+	    joinColumns = @JoinColumn(name = "classroomId", 
+	                              referencedColumnName = "classroomId"), 
+	    inverseJoinColumns = @JoinColumn(name = "trainId", 
+	                              referencedColumnName = "trainId"))
+	Group classroom;
 
 	public Classroom() {
 	};
