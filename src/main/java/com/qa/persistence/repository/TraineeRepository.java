@@ -1,5 +1,5 @@
 package com.qa.persistence.repository;
 
-public class TraineeRepository {
+public interface TraineeRepository {
 
 }

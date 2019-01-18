@@ -1,5 +1,5 @@
 package com.qa.service;
 
-public class ClassroomService {
+public interface ClassroomService {
 
 }
