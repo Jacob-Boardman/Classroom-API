@@ -17,7 +17,7 @@ import com.qa.util.JSONUtil;
 import java.util.Collection;
 
 @Transactional(SUPPORTS)
-@Alternative
+@Default
 public class TraineeDBRepository implements TraineeRepository {
 
 	@PersistenceContext(unitName = "primary")
