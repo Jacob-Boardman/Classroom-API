@@ -1,7 +1,5 @@
 package com.qa.persistence.domain;
 
-import java.util.ArrayList;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +11,7 @@ public class Classroom {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private Long classroomId;
+	
 	private String trainer;
 	private Long trainees;
 
@@ -22,7 +21,6 @@ public class Classroom {
 	public Classroom(Long id, String trainer, Long trainees) {
 		this.setTrainer(trainer);
 		this.setTrainees(trainees);
-
 	}
 
 	public String getTrainer() {

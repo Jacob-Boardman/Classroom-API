@@ -44,7 +44,7 @@ public class ClassroomDBRepository implements ClassroomRepository {
 		Classroom foundClassroom = findClassroom(id);
 		Classroom updatedClassroom = util.getObjectForJSON(classroom, Classroom.class);
 		if (foundClassroom != null) {
-			manager.remove(id);
+			manager.remove(foundClassroom);
 			manager.persist(updatedClassroom);
 			return "{Message :  Updated the classroom}";
 		}

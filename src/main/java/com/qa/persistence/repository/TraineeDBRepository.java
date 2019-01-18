@@ -44,7 +44,7 @@ public class TraineeDBRepository implements TraineeRepository {
 		Trainee foundTrainee = findTrainee(id);
 		Trainee updatedTrainee = util.getObjectForJSON(trainee, Trainee.class);
 		if (foundTrainee != null) {
-			manager.remove(id);
+			manager.remove(foundTrainee);
 			manager.persist(updatedTrainee);
 			return "{Message :  Updated the Trainee}";
 		}
