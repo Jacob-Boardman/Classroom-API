@@ -3,6 +3,8 @@ package com.qa.persistence.repository;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 import static javax.transaction.Transactional.TxType.REQUIRED;
 
+import javax.enterprise.inject.Default;
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,6 +17,7 @@ import com.qa.util.JSONUtil;
 import java.util.Collection;
 
 @Transactional(SUPPORTS)
+@Alternative
 public class TraineeDBRepository implements TraineeRepository {
 
 	@PersistenceContext(unitName = "primary")
