@@ -14,10 +14,9 @@ import com.qa.util.JSONUtil;
 
 import java.util.Collection;
 
-
 @Transactional(SUPPORTS)
-public class TraineeDBRepository implements TraineeRepository{
-	
+public class TraineeDBRepository implements TraineeRepository {
+
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
 
@@ -26,26 +25,49 @@ public class TraineeDBRepository implements TraineeRepository{
 
 	@Transactional(REQUIRED)
 	public String createTrainee(String trainee) {
-		// TODO Auto-generated method stub
-		return null;
+		Trainee newTrainee = util.getObjectForJSON(trainee, Trainee.class);
+		manager.persist(newTrainee);
+		return "{Message : Created a Trainee}";
 	}
 
 	public String getTrainee() {
 		Query query = manager.createQuery("SELECT t FROM Trainee t");
-		Collection<Trainee> trainees = (Collection<Trainee>)query.getResultList();
+		Collection<Trainee> trainees = (Collection<Trainee>) query.getResultList();
 		return util.getJSONForObject(trainees);
 	}
-	
+
 	@Transactional(REQUIRED)
 	public String updateTrainee(Long id, String trainee) {
-		// TODO Auto-generated method stub
-		return null;
+		Trainee foundTrainee = findTrainee(id);
+		Trainee updatedTrainee = util.getObjectForJSON(trainee, Trainee.class);
+		if (foundTrainee != null) {
+			manager.remove(id);
+			manager.persist(updatedTrainee);
+			return "{Message :  Updated the Trainee}";
+		}
+
+		return "{Message :  Could not update Trainee, or no Trainee found}";
 	}
-	
+
 	@Transactional(REQUIRED)
 	public String deleteTrainee(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Trainee foundTrainee = findTrainee(id);
+		if (foundTrainee != null) {
+			manager.remove(foundTrainee);
+			return "{Message : Trainee has been deleted}";
+		}
+		return "{Message : Trainee is not found}";
 	}
-	
+
+	public Trainee findTrainee(Long id) {
+		return manager.find(Trainee.class, id);
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
 }
