@@ -25,8 +25,9 @@ public class ClassroomDBRepository implements ClassroomRepository {
 
 	@Transactional(REQUIRED)
 	public String createClassroom(String classroom) {
-
-		return null;
+		Classroom newClassroom = util.getObjectForJSON(classroom, Classroom.class);
+		manager.persist(newClassroom);
+		return "{Message : Created a classroom}";
 	}
 
 	public String getAllClassrooms() {
@@ -36,9 +37,15 @@ public class ClassroomDBRepository implements ClassroomRepository {
 	}
 
 	@Transactional(REQUIRED)
-	public String updateClassroom(Long id, String Classroom) {
-
-		return null;
+	public String updateClassroom(Long id, String classroom) {
+		Classroom foundClassroom = findClassroom(id);
+		Classroom updatedClassroom = util.getObjectForJSON(classroom, Classroom.class);
+		if (foundClassroom != null) {
+			manager.remove(id);
+			manager.persist(updatedClassroom);
+			return "{Message :  Updated the classroom}";
+		}
+		return "{Message :  Could not update classroom, or no classroom found}";
 	}
 
 	@Transactional(REQUIRED)
